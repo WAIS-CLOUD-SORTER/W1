@@ -1,0 +1,281 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="global_declaration" id="gvarRebotes" x="40" y="40">
+    <field name="NAME">rebotes</field>
+    <value name="VALUE">
+      <block type="math_number" id="gvarCero">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="component_event" id="evInicio" x="40" y="170">
+    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Form" is_generic="false" instance_name="Screen1" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="iniVel">
+        <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+        <field name="COMPONENT_SELECTOR">Bola</field>
+        <field name="PROP">Speed</field>
+        <value name="VALUE">
+          <block type="math_number" id="iniVelCero">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="iniTexto">
+            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LblRebotes"></mutation>
+            <field name="COMPONENT_SELECTOR">LblRebotes</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text" id="iniTextoValor">
+                <field name="TEXT">Rebotes: 0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+
+  <block type="component_event" id="evFlung" x="40" y="470">
+    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" is_generic="false" instance_name="Bola" event_name="Flung"></mutation>
+    <field name="COMPONENT_SELECTOR">Bola</field>
+    <statement name="DO">
+      <block type="component_set_get" id="flungDireccion">
+        <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="Bola"></mutation>
+        <field name="COMPONENT_SELECTOR">Bola</field>
+        <field name="PROP">Heading</field>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="flungDireccionValor">
+            <mutation xmlns="http://www.w3.org/1999/xhtml"><eventparam name="heading"></eventparam></mutation>
+            <field name="VAR">heading</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="flungVelocidad">
+            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+            <field name="COMPONENT_SELECTOR">Bola</field>
+            <field name="PROP">Speed</field>
+            <value name="VALUE">
+              <block type="math_number" id="flungVelocidadValor">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="flungMover" inline="false">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" method_name="MoveTo" is_generic="false" instance_name="Bola"></mutation>
+                <field name="COMPONENT_SELECTOR">Bola</field>
+                <value name="ARG0">
+                  <block type="lexical_variable_get" id="flungX">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml"><eventparam name="x"></eventparam></mutation>
+                    <field name="VAR">x</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="lexical_variable_get" id="flungY">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml"><eventparam name="y"></eventparam></mutation>
+                    <field name="VAR">y</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="evBorde" x="40" y="760">
+    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" is_generic="false" instance_name="Bola" event_name="EdgeReached"></mutation>
+    <field name="COMPONENT_SELECTOR">Bola</field>
+    <statement name="DO">
+      <block type="component_method" id="bordeRebotar" inline="false">
+        <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" method_name="Bounce" is_generic="false" instance_name="Bola"></mutation>
+        <field name="COMPONENT_SELECTOR">Bola</field>
+        <value name="ARG0">
+          <block type="lexical_variable_get" id="bordeValor">
+            <mutation xmlns="http://www.w3.org/1999/xhtml"><eventparam name="edge"></eventparam></mutation>
+            <field name="VAR">edge</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="bordeSi">
+            <mutation elseif="0" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="bordeComparar">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="component_set_get" id="bordeVelocidadActual">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="get" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+                    <field name="COMPONENT_SELECTOR">Bola</field>
+                    <field name="PROP">Speed</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="bordeDiez">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="component_set_get" id="bordeBajarVelocidad">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+                <field name="COMPONENT_SELECTOR">Bola</field>
+                <field name="PROP">Speed</field>
+                <value name="VALUE">
+                  <block type="math_subtract" id="bordeResta">
+                    <value name="A">
+                      <block type="component_set_get" id="bordeVelocidadMenos">
+                        <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="get" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+                        <field name="COMPONENT_SELECTOR">Bola</field>
+                        <field name="PROP">Speed</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="bordeDiezResta">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="component_set_get" id="bordeDetener">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+                <field name="COMPONENT_SELECTOR">Bola</field>
+                <field name="PROP">Speed</field>
+                <value name="VALUE">
+                  <block type="math_number" id="bordeCero">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="lexical_variable_set" id="bordeContar">
+                <field name="VAR">global rebotes</field>
+                <value name="VALUE">
+                  <block type="math_add" id="bordeSuma">
+                    <mutation items="2"></mutation>
+                    <value name="NUM0">
+                      <block type="lexical_variable_get" id="bordeContarActual">
+                        <field name="VAR">global rebotes</field>
+                      </block>
+                    </value>
+                    <value name="NUM1">
+                      <block type="math_number" id="bordeUno">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="bordeMostrarContador">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LblRebotes"></mutation>
+                    <field name="COMPONENT_SELECTOR">LblRebotes</field>
+                    <field name="PROP">Text</field>
+                    <value name="VALUE">
+                      <block type="text_join" id="bordeTextoUnir" inline="false">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="bordeTextoFijo">
+                            <field name="TEXT">Rebotes: </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="lexical_variable_get" id="bordeTextoNumero">
+                            <field name="VAR">global rebotes</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+
+  <block type="component_event" id="evBoton" x="40" y="1260">
+    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Button" is_generic="false" instance_name="BtnReiniciar" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">BtnReiniciar</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="btnReiniciarContador">
+        <field name="VAR">global rebotes</field>
+        <value name="VALUE">
+          <block type="math_number" id="btnCero">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="btnTexto">
+            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LblRebotes"></mutation>
+            <field name="COMPONENT_SELECTOR">LblRebotes</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text" id="btnTextoValor">
+                <field name="TEXT">Rebotes: 0</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="btnVelocidad">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" set_or_get="set" property_name="Speed" is_generic="false" instance_name="Bola"></mutation>
+                <field name="COMPONENT_SELECTOR">Bola</field>
+                <field name="PROP">Speed</field>
+                <value name="VALUE">
+                  <block type="math_number" id="btnVelocidadValor">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_method" id="btnCentrar" inline="false">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" method_name="MoveTo" is_generic="false" instance_name="Bola"></mutation>
+                    <field name="COMPONENT_SELECTOR">Bola</field>
+                    <value name="ARG0">
+                      <block type="math_division" id="btnMitadAncho">
+                        <value name="A">
+                          <block type="component_set_get" id="btnAnchoLienzo">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Width" is_generic="false" instance_name="Lienzo1"></mutation>
+                            <field name="COMPONENT_SELECTOR">Lienzo1</field>
+                            <field name="PROP">Width</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="btnDosAncho">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="math_division" id="btnMitadAlto">
+                        <value name="A">
+                          <block type="component_set_get" id="btnAltoLienzo">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Height" is_generic="false" instance_name="Lienzo1"></mutation>
+                            <field name="COMPONENT_SELECTOR">Lienzo1</field>
+                            <field name="PROP">Height</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="btnDosAlto">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+
+  <yacodeblocks xmlns="https://appinventor.mit.edu/ns/project/" ya-version="237" language-version="39"></yacodeblocks>
+</xml>
