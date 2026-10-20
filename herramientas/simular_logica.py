@@ -71,7 +71,7 @@ class Bola(object):
         """cuando BtnReiniciar.Click."""
         self.rebotes = 0
         self.speed = 0
-        self.mover_a(ANCHO / 2.0, ALTO / 2.0)
+        self.mover_a(ANCHO / 2.0 - TAM_BALON / 2.0, ALTO / 2.0 - TAM_BALON / 2.0)
 
     # --- reloj interno del sprite ---------------------------------------
     def paso(self):
@@ -130,7 +130,8 @@ def main():
 
     bola.reiniciar()
     assert bola.rebotes == 0 and bola.speed == 0
-    assert bola.x == ANCHO / 2.0 and bola.y == ALTO / 2.0
+    assert bola.x == ANCHO / 2.0 - TAM_BALON / 2.0
+    assert bola.y == ALTO / 2.0 - TAM_BALON / 2.0
 
     print("\nOK: el balon rebota, pierde velocidad, se detiene y se reinicia al centro.")
 

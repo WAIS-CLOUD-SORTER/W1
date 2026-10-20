@@ -236,33 +236,51 @@
                     <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="ImageSprite" method_name="MoveTo" is_generic="false" instance_name="Bola"></mutation>
                     <field name="COMPONENT_SELECTOR">Bola</field>
                     <value name="ARG0">
-                      <block type="math_division" id="btnMitadAncho">
+                      <block type="math_subtract" id="btnCentroX">
                         <value name="A">
-                          <block type="component_set_get" id="btnAnchoLienzo">
-                            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Width" is_generic="false" instance_name="Lienzo1"></mutation>
-                            <field name="COMPONENT_SELECTOR">Lienzo1</field>
-                            <field name="PROP">Width</field>
+                          <block type="math_division" id="btnMitadAncho">
+                            <value name="A">
+                              <block type="component_set_get" id="btnAnchoLienzo">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Width" is_generic="false" instance_name="Lienzo1"></mutation>
+                                <field name="COMPONENT_SELECTOR">Lienzo1</field>
+                                <field name="PROP">Width</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="btnDosAncho">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
                           </block>
                         </value>
                         <value name="B">
-                          <block type="math_number" id="btnDosAncho">
-                            <field name="NUM">2</field>
+                          <block type="math_number" id="btnMedioBalonX">
+                            <field name="NUM">22</field>
                           </block>
                         </value>
                       </block>
                     </value>
                     <value name="ARG1">
-                      <block type="math_division" id="btnMitadAlto">
+                      <block type="math_subtract" id="btnCentroY">
                         <value name="A">
-                          <block type="component_set_get" id="btnAltoLienzo">
-                            <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Height" is_generic="false" instance_name="Lienzo1"></mutation>
-                            <field name="COMPONENT_SELECTOR">Lienzo1</field>
-                            <field name="PROP">Height</field>
+                          <block type="math_division" id="btnMitadAlto">
+                            <value name="A">
+                              <block type="component_set_get" id="btnAltoLienzo">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" component_type="Canvas" set_or_get="get" property_name="Height" is_generic="false" instance_name="Lienzo1"></mutation>
+                                <field name="COMPONENT_SELECTOR">Lienzo1</field>
+                                <field name="PROP">Height</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="btnDosAlto">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
                           </block>
                         </value>
                         <value name="B">
-                          <block type="math_number" id="btnDosAlto">
-                            <field name="NUM">2</field>
+                          <block type="math_number" id="btnMedioBalonY">
+                            <field name="NUM">22</field>
                           </block>
                         </value>
                       </block>

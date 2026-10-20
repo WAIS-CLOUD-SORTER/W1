@@ -130,11 +130,15 @@ cuando BtnReiniciar .Clic
 hacer   poner global rebotes como 0
         poner LblRebotes .Texto como "Rebotes: 0"
         poner Bola .Velocidad como 0
-        llamar Bola .MoverA  x:( Lienzo1 .Ancho / 2 )  y:( Lienzo1 .Alto / 2 )
+        llamar Bola .MoverA
+               x:( ( Lienzo1 .Ancho / 2 ) - 22 )
+               y:( ( Lienzo1 .Alto / 2 ) - 22 )
 ```
 
-Dividir el ancho y el alto del lienzo entre 2 centra el balón en cualquier
-pantalla, sin depender de coordenadas fijas.
+Dividir el ancho y el alto del lienzo entre 2 y restarle 22 (la mitad de los
+44 px del balón) deja el balón exactamente al centro en cualquier pantalla, sin
+depender de coordenadas fijas. El origen del `ImageSprite` es su esquina
+superior izquierda.
 
 ## Verificación
 

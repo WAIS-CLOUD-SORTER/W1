@@ -102,12 +102,14 @@ hacer   poner global rebotes como 0
         poner LblRebotes .Texto como "Rebotes: 0"
         poner Bola .Velocidad como 0
         llamar Bola .MoverA
-               x: ( Lienzo1 .Ancho / 2 )
-               y: ( Lienzo1 .Alto / 2 )
+               x: ( ( Lienzo1 .Ancho / 2 ) - 22 )
+               y: ( ( Lienzo1 .Alto / 2 ) - 22 )
 ```
 
 `Lienzo1 .Ancho` y `Lienzo1 .Alto` están en `Lienzo1 → get Ancho` y
-`get Alto`; la división es `Matemáticas → 0 / 0`.
+`get Alto`; la división es `Matemáticas → 0 / 0`. Al resultado se le resta 22
+(la mitad de los 44 px del balón) porque `MoverA` ubica la esquina superior
+izquierda del sprite, no su centro.
 
 ## 4. Probar en el teléfono
 
